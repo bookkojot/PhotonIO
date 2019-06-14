@@ -1,0 +1,1 @@
+ffmpeg -i giphy.gif -vf 'transpose=1,noise=alls=100:allf=t+u,pad=500:500:(ow-iw)/2:(oh-ih)/2' -vsync 0 -y -pix_fmt gray -f rawvideo - | ./treshold 128 | ffmpeg -f rawvideo -pix_fmt gray -s 500x500 -i - -y -vcodec libx264 222.mp4
